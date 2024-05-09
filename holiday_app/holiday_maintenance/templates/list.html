@@ -1,0 +1,36 @@
+{% extends "layout.html" %} {% block body %}
+    <br>
+    <table class="table">
+        {% if holidaylist %}
+        <thead>
+            <tr>
+                <th class="table-primary" scope="col">祝日</th>
+                <th class="table-primary" scope="col">テキスト</th>
+            </tr>
+        </thead>
+
+        <tbody>       
+            {% for holiday in holidaylist %}
+            <tr>
+                <td class="holi_date" scope="row">{{ holiday.holi_date }}</td>    
+                <td class="holi_text" scope="row">{{ holiday.holi_text }}</td>    
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td>
+                    祝日マスタが登録されていません
+                </td>
+            </tr>
+            {% endif %}     
+        </tbody>
+    </table>    
+    <br>
+
+    <form action="{{ url_for('input') }}" method="post">
+        <button type="submit" class="btn btn-primary">戻る</button>
+    </form>    
+    <br>   
+    <br>
+
+{% endblock %}
